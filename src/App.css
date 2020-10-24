@@ -1,5 +1,5 @@
 * {
-  font-family:  sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -77,22 +77,10 @@ button {
   color: #fff;
 }
 
-.login .login-container .button-container p span {
-  color: yellow;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  margin-left: 5px;
-  cursor: pointer;
-  transition: all 400ms ease-in-out;
-}
-
-.login .login-container .button-container p span:hover {
-  color: red;
-}
-
 .login .login-container .error-message {
-  color: red;
+  color: #fff;
   font-size: 16px;
+  padding-top: 4px;;
 }
 
 .container {
@@ -102,7 +90,7 @@ button {
   color: #fff;
   background: radial-gradient(
     ellipse at left bottom,
-    rgba(5, 107, 174, 1) 0%,
+    rgba(0, 127, 174, 1) 0%,
     rgba(6, 107, 174, 0.9) 59%,
     rgba(4, 107, 174, 0.9) 100%
   );
@@ -147,11 +135,19 @@ button {
   cursor: pointer;
 }
 .home li{
-  padding-top: 6px;
+  font-weight: 600;
+  padding: 8px 0px 4px;
+  width: 200px;
+  border-bottom: 1px solid #fff;
 }
+
 .user-posts .blog-post{
   display: inline-block;
-  min-width: 600px;
+  width: 600px;
+}
+
+.blog-post{
+  cursor: pointer;
 }
 
 .user-posts .user-name{
@@ -164,4 +160,11 @@ button {
   width: 100%;
   padding: 14px 14px 4px 14px;
   min-height: 100vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .user-posts > li > .blog-post{
+    width: auto;
+    overflow-wrap: break-word;
+  }
 }

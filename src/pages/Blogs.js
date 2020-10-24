@@ -16,9 +16,13 @@ const Blog = () => {
             const users = await getUsers();
             const posts = await getBlogPots();
             const updatedPosts = addUserDetailsToBlogPost(posts, users);
-            if (id)
-                return setPosts(updatedPosts.filter(post => post.id === id.toString()));
-            setPosts(updatedPosts);
+            if (id) {
+                const post = updatedPosts.filter(post => post.id.toString() === id);
+                setPosts(post);
+            }
+            else {
+                setPosts(updatedPosts);
+            }
         }
         fetchPosts();
     }, [id]);
@@ -45,8 +49,16 @@ const Blog = () => {
     const openBlogPost = (id) => {
         if (!id) return;
         history.push(`/blog/${id}`);
-        //return <Redirect to={{ pathname: `/blog/${id}`, state: { from: props.location } }} />
     }
+
+    if (id)
+        return <div className="container">
+            <ul className="user-posts">
+                <li>{posts[0].title}</li>
+                <li>{posts[0].body}</li>
+                <li>{posts[0].user.name} ({posts[0].user.username})</li>
+            </ul>
+        </div>
 
     return <div className="container">
         <h3>Blogs</h3>
