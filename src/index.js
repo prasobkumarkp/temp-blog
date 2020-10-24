@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import useGlobalState from './store/useGlobalState';
+
+import Login from './components/Login';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { Context } from "./store/context";
+import SecureRoute from './components/SecureRoute';
+const Index = () => {
+  const store = useGlobalState();
+  return (
+    <Context.Provider value={store}>
+      <Router>
+        <Switch>
+          <Route exact path={["/", "/login"]} component={Login} />
+          <SecureRoute component={App} />
+        </Switch>
+      </Router>
+    </Context.Provider>
+  );
+}
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Index />
   </React.StrictMode>,
   document.getElementById('root')
 );
